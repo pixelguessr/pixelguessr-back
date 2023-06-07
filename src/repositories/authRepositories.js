@@ -1,16 +1,16 @@
 import db from "../config/database.js";
 
 
-  async function findUserByEmail(email) {
-    return await db.query(`SELECT * FROM users WHERE email=$1`,[email]);
+  async function findUserByName(user) {
+    return await db.query(`SELECT * FROM users WHERE name=$1`,[user]);
   }
 
   async function findSessionById(user_id) {
     return await db.query(`SELECT * FROM sessions WHERE "user_id"=$1`,[user_id]);
   }
 
-  async function create(name, email, passwordE) {
-    return await db.query(`INSERT INTO users (name, email, password) VALUES($1, $2, $3)`, [name, email, passwordE]);
+  async function create(name, passwordE) {
+    return await db.query(`INSERT INTO users (name, password) VALUES($1, $2, $3)`, [name, passwordE]);
   }
 
   async function createToken(token, user_id) {
@@ -24,7 +24,7 @@ import db from "../config/database.js";
   export default{
     create,
     update,
-    findUserByEmail,
+    findUserByName,
     findSessionById,
     createToken
   }
