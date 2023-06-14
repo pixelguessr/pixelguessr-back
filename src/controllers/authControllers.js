@@ -3,8 +3,8 @@ import authServices from "../services/authServices.js";
 async function create(req, res) {
     const { name, password } = req.body
     try {
-        await authServices.create(name, password)
-        res.sendStatus(201)
+        const response = await authServices.create(name, password)
+        res.status(201).send(response)
 
     } catch (error) {
         console.error(error);

@@ -10,4 +10,6 @@ const configDatabase = {
 
 if (true) configDatabase.ssl = true;
 
-export const db = new Pool(configDatabase);
+const db = new Pool(configDatabase);
+
+export default db;

@@ -28,7 +28,9 @@ async function update(name, password) {
   }
   const user_id = user.rows[0].id
   const token = uuid()
-  const obj = { token }
+  const doneLevels = await authRepositories.getUserDoneLevels(user_id)
+  const userDoneLevels = doneLevels.rows
+  const obj = { token, userDoneLevels }
   await authRepositories.update(token, user_id)
   return obj
 }
