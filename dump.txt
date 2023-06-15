@@ -1,0 +1,33 @@
+-- Criação da tabela 'users'
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) UNIQUE,
+  password VARCHAR(100),
+  score INTEGER DEFAULT 0
+);
+
+-- Criação da tabela 'sessions'
+CREATE TABLE sessions (
+  id SERIAL PRIMARY KEY,
+  token VARCHAR(255),
+  user_id INTEGER REFERENCES users(id)
+);
+
+-- Criação da tabela 'characters'
+CREATE TABLE characters (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) UNIQUE NOT NULL,
+  fullname VARCHAR(100),
+  game VARCHAR(100),
+  image TEXT UNIQUE NOT NULL,
+  hint_one TEXT,
+  hint_two TEXT,
+  hint_three TEXT
+);
+
+-- Criação da tabela 'guesses'
+CREATE TABLE guesses (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  character_id INTEGER REFERENCES characters(id)
+);
