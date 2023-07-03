@@ -7,7 +7,6 @@ async function getInfo(req, res) {
         res.status(200).send(response)
 
     } catch (error) {
-        console.error(error);
         res.sendStatus(500);
     }
 }
@@ -20,7 +19,7 @@ async function guess(req, res) {
         res.sendStatus(201)
 
     } catch (error) {
-        console.error(error);
+        console.log(error)
         res.sendStatus(500);
     }
 }

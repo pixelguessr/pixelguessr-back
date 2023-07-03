@@ -1,7 +1,7 @@
   function unauthorizedError() {
     return {
       name: "UnauthorizedError",
-      message: "Você precisa estar logado!",
+      message: "Você deve estar logado",
     };
   }
   

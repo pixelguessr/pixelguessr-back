@@ -23,7 +23,7 @@ async function update(name, password) {
   }
 
   const user = await authRepositories.findUserByName(name)
-  if (!user.rows[0] || !bcrypt.compareSync(password, mail.rows[0].password)) {
+  if (!user.rows[0] || !bcrypt.compareSync(password, user.rows[0].password)) {
     throw errors.unauthorizedError();
   }
   const user_id = user.rows[0].id
